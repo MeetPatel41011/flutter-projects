@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hospitalseatmanagementsystem/screens/Hospitallogin.dart';
 
 class Hospital extends StatefulWidget {
   const Hospital({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _HospitalState extends State<Hospital> {
           ElevatedButton(
             style: style,
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Hospital()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Hospitallogin()));
             },
             child: const Text('Login'),
           ),
