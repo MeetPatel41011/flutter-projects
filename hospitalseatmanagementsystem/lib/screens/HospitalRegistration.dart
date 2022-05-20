@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hospitalseatmanagementsystem/screens/Hospitallogin.dart';
 
 import 'AddSeatForHospital.dart';
 
@@ -126,7 +127,18 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                     ),),
                     
                     const Expanded(child: SizedBox(height: 30),),
-                    
+                    Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Hospitallogin()));
+              },
+              child: const Text(
+                "Alredy Registered?",
+                style: TextStyle(fontSize: 10, color: Colors.white),
+                ),
+              ),
+          )
                   ],
                 ),
               ),

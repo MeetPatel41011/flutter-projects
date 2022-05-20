@@ -69,18 +69,7 @@ class _HospitalloginState extends State<Hospitallogin> {
               ),
           ),
 
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: GestureDetector(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Hospitallogin()));
-              },
-              child: const Text(
-                "Alredy Registered?",
-                style: TextStyle(fontSize: 10, color: Colors.white),
-                ),
-              ),
-          )
+          
           ],
         ),
       )),
