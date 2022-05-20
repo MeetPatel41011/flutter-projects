@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:hospitalseatmanagementsystem/screens/HospitalUpdateSeat.dart';
-import 'package:hospitalseatmanagementsystem/screens/HospitalRegistration.dart';
+import 'package:hospitalseatmanagementsystem/screens/SeatDataForAdmin.dart';
 
-class Hospitallogin extends StatefulWidget {
-  const Hospitallogin({Key? key}) : super(key: key);
+class AdminLogin extends StatefulWidget {
+  const AdminLogin({Key? key}) : super(key: key);
 
   @override
-  State<Hospitallogin> createState() => _HospitalloginState();
+  State<AdminLogin> createState() => _AdminLoginState();
 }
 
-class _HospitalloginState extends State<Hospitallogin> {
+class _AdminLoginState extends State<AdminLogin> {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style =
@@ -50,37 +49,11 @@ class _HospitalloginState extends State<Hospitallogin> {
             ElevatedButton(
               style: style,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const HospitalUpdateSeat()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const SeatDataForAdmin()));
               },
-              child: const Text('Login'),
+              child: const Text('Login As An Admin!'),
             ),
             const SizedBox(height: 30),
-
-            Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: GestureDetector(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const HospitalRegistration()));
-              },
-              child: const Text(
-                "Haven't Registered yet?",
-                style: TextStyle(fontSize: 10, color: Colors.white),
-                ),
-              ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: GestureDetector(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Hospitallogin()));
-              },
-              child: const Text(
-                "Alredy Registered?",
-                style: TextStyle(fontSize: 10, color: Colors.white),
-                ),
-              ),
-          )
           ],
         ),
       )),

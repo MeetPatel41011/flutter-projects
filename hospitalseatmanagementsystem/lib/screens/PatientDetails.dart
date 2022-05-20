@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hospitalseatmanagementsystem/screens/HospitalUpdateSeat.dart';
+import 'package:hospitalseatmanagementsystem/screens/SeatData.dart';
 
 class PatientDetails extends StatefulWidget {
   const PatientDetails({Key? key}) : super(key: key);
@@ -56,11 +56,7 @@ class _PatientDetailsState extends State<PatientDetails> {
                     Expanded(child: ElevatedButton(
                       style: style,
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const HospitalUpdateSeat()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SeatData()));
                       },
                       child: const Text('See vacancy Data'),
                     ),),

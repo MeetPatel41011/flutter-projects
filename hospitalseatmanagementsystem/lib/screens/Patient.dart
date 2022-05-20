@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hospitalseatmanagementsystem/screens/Admin_login.dart';
-import 'package:hospitalseatmanagementsystem/screens/Hospital.dart';
+
 import 'package:hospitalseatmanagementsystem/screens/PatientDetails.dart';
 import 'package:hospitalseatmanagementsystem/screens/SeatData.dart';
 

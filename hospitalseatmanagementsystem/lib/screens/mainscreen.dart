@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hospitalseatmanagementsystem/screens/Admin_login.dart';
+import 'package:hospitalseatmanagementsystem/screens/AdminLogin.dart';
 import 'package:hospitalseatmanagementsystem/screens/Hospital.dart';
 import 'package:hospitalseatmanagementsystem/screens/Patient.dart';
 
@@ -43,7 +43,7 @@ class _FirstScreenState extends State<FirstScreen> {
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Admin_login()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const AdminLogin()));
               },
               child: const Text(
                 "Admin Login",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hospitalseatmanagementsystem/screens/HospitalUpdateSeat.dart';
+
+import 'AddSeatForHospital.dart';
 
 class HospitalRegistration extends StatefulWidget {
   const HospitalRegistration({Key? key}) : super(key: key);
@@ -119,7 +120,7 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    const HospitalUpdateSeat()));
+                                    const AddSeatForHospital()));
                       },
                       child: const Text('Register Hospital'),
                     ),),

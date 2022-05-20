@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hospitalseatmanagementsystem/screens/Hospitallogin.dart';
-import 'package:hospitalseatmanagementsystem/screens/RegisterHospital.dart';
+import 'package:hospitalseatmanagementsystem/screens/HospitalRegistration.dart';
 
 class Hospital extends StatefulWidget {
   const Hospital({Key? key}) : super(key: key);
