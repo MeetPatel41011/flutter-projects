@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:hospitalseatmanagementsystem/screens/HospitalUpdateSeat.dart';
+import 'package:hospitalseatmanagementsystem/screens/SeatData.dart';
 
-class Hospitallogin extends StatefulWidget {
-  const Hospitallogin({Key? key}) : super(key: key);
+class HospitalUpdateSeat extends StatefulWidget {
+  const HospitalUpdateSeat({Key? key}) : super(key: key);
 
   @override
-  State<Hospitallogin> createState() => _HospitalloginState();
+  State<HospitalUpdateSeat> createState() => _HospitalUpdateSeatState();
 }
 
-class _HospitalloginState extends State<Hospitallogin> {
+class _HospitalUpdateSeatState extends State<HospitalUpdateSeat> {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style =
@@ -22,13 +22,26 @@ class _HospitalloginState extends State<Hospitallogin> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 200),
               child: TextFormField(
               decoration: const InputDecoration(
                 border: UnderlineInputBorder(),
                 //border: OutlineInputBorder(),
-                labelText: 'Enter your username/email',
+                labelText: 'Enter Mild seat vacancy',
+              ),
+            ),
+            ),
+
+
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 200),
+              child: TextFormField(
+              decoration: const InputDecoration(
+                border: UnderlineInputBorder(),
+                //border: OutlineInputBorder(),
+                labelText: 'Enter Moderate Seat vacancy',
               ),
             ),
             ),
@@ -39,7 +52,18 @@ class _HospitalloginState extends State<Hospitallogin> {
               decoration: const InputDecoration(
                 border: UnderlineInputBorder(),
                 //border: OutlineInputBorder(),
-                labelText: 'Enter your Password',
+                labelText: 'Enter Severe seat vacancy',
+              ),
+            ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 200),
+              child: TextFormField(
+              decoration: const InputDecoration(
+                border: UnderlineInputBorder(),
+                //border: OutlineInputBorder(),
+                labelText: 'Enter Critical Seat vacancy',
               ),
             ),
             ),
@@ -49,9 +73,9 @@ class _HospitalloginState extends State<Hospitallogin> {
             ElevatedButton(
               style: style,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const HospitalUpdateSeat()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const SeatData()));
               },
-              child: const Text('Login'),
+              child: const Text('Update Seats vacancy'),
             ),
             const SizedBox(height: 30),
           ],
