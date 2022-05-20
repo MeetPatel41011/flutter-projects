@@ -10,8 +10,7 @@ class SeatData extends StatefulWidget {
 class _SeatDataState extends State<SeatData> {
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style =
-        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+    //final ButtonStyle style =ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
 
     return const Material(
       child: Center(
