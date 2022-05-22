@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "104013035757",
+    "project_id": "hospitalseatmanagementsystem",
+    "storage_bucket": "hospitalseatmanagementsystem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104013035757:android:ec98204c533cc4208434e4",
+        "android_client_info": {
+          "package_name": "com.example.hospitalseatmanagementsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "104013035757-pu4uavmfmrhvf5oa88iaci1pbt0d890j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiCyJhtUWbMYmJIYaoqoIba7GFoSL41-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "104013035757-pu4uavmfmrhvf5oa88iaci1pbt0d890j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "104013035757-1re203hvgvmba84opcs25gjrjitro2ta.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hospitalseatmanagementsystem"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

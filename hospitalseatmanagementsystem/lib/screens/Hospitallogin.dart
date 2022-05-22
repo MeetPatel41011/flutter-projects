@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hospitalseatmanagementsystem/screens/HospitalUpdateSeat.dart';
 import 'package:hospitalseatmanagementsystem/screens/HospitalRegistration.dart';
@@ -14,6 +15,7 @@ class _HospitalloginState extends State<Hospitallogin> {
   Widget build(BuildContext context) {
     final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+    String email = '', pass = '';
 
     return Material(
       child: Center(
@@ -24,8 +26,11 @@ class _HospitalloginState extends State<Hospitallogin> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 200),
-              child: TextFormField(
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 200),
+              child: TextField(
+                onChanged: (value) {
+                      email = value;
+                    },
               decoration: const InputDecoration(
                 border: UnderlineInputBorder(),
                 //border: OutlineInputBorder(),
@@ -36,7 +41,10 @@ class _HospitalloginState extends State<Hospitallogin> {
 
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 200),
-              child: TextFormField(
+              child: TextField(
+                onChanged: (value) {
+                      pass = value;
+                    },
               decoration: const InputDecoration(
                 border: UnderlineInputBorder(),
                 //border: OutlineInputBorder(),
@@ -49,8 +57,21 @@ class _HospitalloginState extends State<Hospitallogin> {
             const SizedBox(height: 50),
             ElevatedButton(
               style: style,
-              onPressed: () {
+              onPressed: () async {
+                try {
+                UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  email: email,
+                  password: pass
+                );
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const HospitalUpdateSeat()));
+              } on FirebaseAuthException catch (e) {
+                if (e.code == 'user-not-found') {
+                  print('No user found for that email.');
+                } else if (e.code == 'wrong-password') {
+                  print('Wrong password provided for that user.');
+                }
+              }
+                
               },
               child: const Text('Login'),
             ),
