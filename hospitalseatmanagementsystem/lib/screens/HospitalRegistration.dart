@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hospitalseatmanagementsystem/screens/Hospitallogin.dart';
 
 import 'AddSeatForHospital.dart';
+import 'package:toast/toast.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HospitalRegistration extends StatefulWidget {
   const HospitalRegistration({Key? key}) : super(key: key);
@@ -141,15 +143,29 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                             builder: (context) => const AddSeatForHospital()));
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'weak-password') {
-                        print('The password provided is too weak.');
+                        Fluttertoast.showToast(
+                        msg: "The password provided is too weak.",
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 3,
+                        backgroundColor: Colors.grey,
+                        textColor: Colors.white,
+                        fontSize: 16.0
+                        );
+                        
                       } else if (e.code == 'email-already-in-use') {
-                        print('The account already exists for that email.');
+                        Fluttertoast.showToast(
+                        msg: "The account already exists for that email.",
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 3,
+                        backgroundColor: Colors.grey,
+                        textColor: Colors.white,
+                        fontSize: 16.0
+                        );
+                       
                       }
                     } catch (e) {
                       print(e);
-                    }
-
-                    
+                    }   
                   },
                   child: const Text('Register Hospital'),
                 ),

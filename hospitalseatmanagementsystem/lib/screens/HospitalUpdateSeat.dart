@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hospitalseatmanagementsystem/screens/SeatData.dart';
 
@@ -9,7 +10,53 @@ class HospitalUpdateSeat extends StatefulWidget {
 }
 
 class _HospitalUpdateSeatState extends State<HospitalUpdateSeat> {
+
+  var mild = "";
+  var moderate = "";
+  var severe = "";
+  var critical = "";
+  // Create a text controller and use it to retrieve the current value
+  // of the TextField.
+  final mildController = TextEditingController();
+  final moderateController = TextEditingController();
+  final severeController = TextEditingController();
+  final criticalController = TextEditingController();
+
+
   @override
+
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    mildController.dispose();
+    moderateController.dispose();
+    severeController.dispose();
+    criticalController.dispose();
+    super.dispose();
+  }
+
+  clearText() {
+    mildController.clear();
+    moderateController.clear();
+    severeController.clear();
+    criticalController.clear();
+  }
+
+  CollectionReference firebasefirestore =
+      FirebaseFirestore.instance.collection('Hospital');
+
+  Future<void> updateUser() {
+    return firebasefirestore
+        .doc('seats')
+        //will edit the doc if already available or will create a new doc with this given ID
+        .set(
+          {'mild-seat': mild, 'moderate-seat': moderate, 'severe-seat': severe, 'critical-seat': critical},
+          SetOptions(merge: true),
+          // if set to 'false', then only these given fields will be added to that doc
+        )
+        .then((value) => debugPrint("User Added"))
+        .catchError((error) => debugPrint("Failed to add user: $error"));
+  }
+
   Widget build(BuildContext context) {
     final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
@@ -31,6 +78,7 @@ class _HospitalUpdateSeatState extends State<HospitalUpdateSeat> {
                 //border: OutlineInputBorder(),
                 labelText: 'Enter Mild seat vacancy',
               ),
+              controller: mildController,
             ),
             ),
 
@@ -43,6 +91,7 @@ class _HospitalUpdateSeatState extends State<HospitalUpdateSeat> {
                 //border: OutlineInputBorder(),
                 labelText: 'Enter Moderate Seat vacancy',
               ),
+              controller: moderateController,
             ),
             ),
 
@@ -54,6 +103,7 @@ class _HospitalUpdateSeatState extends State<HospitalUpdateSeat> {
                 //border: OutlineInputBorder(),
                 labelText: 'Enter Severe seat vacancy',
               ),
+              controller: severeController,
             ),
             ),
 
@@ -65,6 +115,7 @@ class _HospitalUpdateSeatState extends State<HospitalUpdateSeat> {
                 //border: OutlineInputBorder(),
                 labelText: 'Enter Critical Seat vacancy',
               ),
+              controller: criticalController,
             ),
             ),
             
@@ -73,6 +124,17 @@ class _HospitalUpdateSeatState extends State<HospitalUpdateSeat> {
             ElevatedButton(
               style: style,
               onPressed: () {
+
+                setState(() {
+                    mild = mildController.text;
+                    moderate = moderateController.text;
+                    severe = criticalController.text;
+                    critical = criticalController.text;
+                    updateUser();
+                    clearText();
+                  });
+
+
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const SeatData()));
               },
               child: const Text('Update Seats vacancy'),

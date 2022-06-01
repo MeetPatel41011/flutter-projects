@@ -2,7 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hospitalseatmanagementsystem/screens/HospitalUpdateSeat.dart';
 import 'package:hospitalseatmanagementsystem/screens/HospitalRegistration.dart';
-
+import 'package:toast/toast.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 class Hospitallogin extends StatefulWidget {
   const Hospitallogin({Key? key}) : super(key: key);
 
@@ -66,9 +67,24 @@ class _HospitalloginState extends State<Hospitallogin> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const HospitalUpdateSeat()));
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'user-not-found') {
-                  print('No user found for that email.');
+                  Fluttertoast.showToast(
+                        msg: "No user found for that email.",
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 3,
+                        backgroundColor: Colors.grey,
+                        textColor: Colors.white,
+                        fontSize: 16.0
+                        );
+                  
                 } else if (e.code == 'wrong-password') {
-                  print('Wrong password provided for that user.');
+                  Fluttertoast.showToast(
+                        msg: "Wrong password provided for that user.",
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 3,
+                        backgroundColor: Colors.grey,
+                        textColor: Colors.white,
+                        fontSize: 16.0
+                        );
                 }
               }
                 

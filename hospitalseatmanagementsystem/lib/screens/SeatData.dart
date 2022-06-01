@@ -15,7 +15,7 @@ class _SeatDataState extends State<SeatData> {
     return const Material(
       child: Center(
         child: Text(
-          "Meet",
+          "Seat Data",
         )
           ),
     );

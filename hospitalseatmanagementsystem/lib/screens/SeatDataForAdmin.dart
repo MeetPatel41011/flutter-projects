@@ -15,7 +15,7 @@ class _SeatDataForAdminState extends State<SeatDataForAdmin> {
     return const Material(
       child: Center(
         child: Text(
-          "Meet",
+          "Seat Data",
         )
           ),
     );
