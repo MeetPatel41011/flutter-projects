@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hospitalseatmanagementsystem/screens/SeatData.dart';
 
 class HospitalUpdateSeat extends StatefulWidget {
-  const HospitalUpdateSeat({Key? key}) : super(key: key);
+  const HospitalUpdateSeat({Key? key, required this.title}) : super(key: key);
+  final String? title;
 
   @override
   State<HospitalUpdateSeat> createState() => _HospitalUpdateSeatState();
@@ -46,10 +47,13 @@ class _HospitalUpdateSeatState extends State<HospitalUpdateSeat> {
 
   Future<void> updateUser() {
     return firebasefirestore
-        .doc('seats')
+        .doc('${widget.title}'.toString())
         //will edit the doc if already available or will create a new doc with this given ID
         .set(
-          {'mild-seat': mild, 'moderate-seat': moderate, 'severe-seat': severe, 'critical-seat': critical},
+          {'mild-seat': mild, 
+          'moderate-seat': moderate, 
+          'severe-seat': severe, 
+          'critical-seat': critical},
           SetOptions(merge: true),
           // if set to 'false', then only these given fields will be added to that doc
         )

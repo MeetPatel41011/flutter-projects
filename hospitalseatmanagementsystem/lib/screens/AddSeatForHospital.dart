@@ -3,14 +3,17 @@ import 'package:hospitalseatmanagementsystem/screens/SeatData.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddSeatForHospital extends StatefulWidget {
-  const AddSeatForHospital({Key? key}) : super(key: key);
+  const AddSeatForHospital({Key? key, required this.title}) : super(key: key);
+  final String? title;
   @override
   State<AddSeatForHospital> createState() => _AddSeatForHospitalState();
 }
 
 class _AddSeatForHospitalState extends State<AddSeatForHospital> {
+  CollectionReference firebasefirestore =
+      FirebaseFirestore.instance.collection('Hospital');
   //final _formKey = GlobalKey<FormState>();
-  
+
   var mild = "";
   var moderate = "";
   var severe = "";
@@ -39,12 +42,9 @@ class _AddSeatForHospitalState extends State<AddSeatForHospital> {
     criticalController.clear();
   }
 
-  CollectionReference firebasefirestore =
-      FirebaseFirestore.instance.collection('Hospital2');
-
   Future<void> addUser() {
     return firebasefirestore
-        .doc('seats')
+        .doc('${widget.title}')
         //will edit the doc if already available or will create a new doc with this given ID
         .set(
           {
@@ -56,7 +56,7 @@ class _AddSeatForHospitalState extends State<AddSeatForHospital> {
           SetOptions(merge: true),
           // if set to 'false', then only these given fields will be added to that doc
         )
-        .then((value) => debugPrint("User Added"))
+        .then((value) => debugPrint("Seat Added"))
         .catchError((error) => debugPrint("Failed to add user: $error"));
   }
 
@@ -81,7 +81,6 @@ class _AddSeatForHospitalState extends State<AddSeatForHospital> {
                   //border: OutlineInputBorder(),
                   labelText: 'Enter Mild seat vacancy',
                 ),
-                controller: mildController,
               ),
             ),
             Padding(
@@ -124,6 +123,7 @@ class _AddSeatForHospitalState extends State<AddSeatForHospital> {
             ElevatedButton(
               style: style,
               onPressed: () {
+                //print('${widget.title}');
                 setState(() {
                   mild = mildController.text;
                   moderate = moderateController.text;
@@ -136,7 +136,7 @@ class _AddSeatForHospitalState extends State<AddSeatForHospital> {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const SeatData()));
               },
-              child: const Text('Add vacancy Seats'),
+              child: Text("Add seat data"),
             ),
             const SizedBox(height: 30),
           ],
