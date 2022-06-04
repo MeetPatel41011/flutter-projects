@@ -139,7 +139,7 @@ class _AddSeatForHospitalState extends State<AddSeatForHospital> {
                 });
 
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SeatData()));
+                    MaterialPageRoute(builder: (context) => SeatData()));
               },
               child: Text("Add seat data"),
             ),

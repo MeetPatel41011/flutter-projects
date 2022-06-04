@@ -33,7 +33,7 @@ class _PatientState extends State<Patient> {
           const SizedBox(height: 50),
           
           FloatingActionButton(onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const SeatData()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) =>  SeatData()));
             
           },
           child: const Text(

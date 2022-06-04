@@ -140,7 +140,7 @@ class _HospitalUpdateSeatState extends State<HospitalUpdateSeat> {
                 });
 
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SeatData()));
+                    MaterialPageRoute(builder: (context) =>  SeatData()));
               },
               child: const Text('Update Seats vacancy'),
             ),

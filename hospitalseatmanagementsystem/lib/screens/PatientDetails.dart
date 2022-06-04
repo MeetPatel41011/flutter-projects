@@ -56,7 +56,7 @@ class _PatientDetailsState extends State<PatientDetails> {
                     Expanded(child: ElevatedButton(
                       style: style,
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SeatData()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>  SeatData()));
                       },
                       child: const Text('See vacancy Data'),
                     ),),

@@ -1,36 +1,75 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SeatData extends StatefulWidget {
-  const SeatData({Key? key}) : super(key: key);
+  SeatData();
 
   @override
-  State<SeatData> createState() => _SeatDataState();
+  SeatDataState createState() => SeatDataState();
 }
 
-class _SeatDataState extends State<SeatData> {
-  Future<void> getData() async {
-    // Get docs from collection reference
-
-    CollectionReference firebasefirestore =
-        FirebaseFirestore.instance.collection('Hospital');
-
-    QuerySnapshot querySnapshot = await firebasefirestore.get();
-
-    // Get data from docs and convert map to List
-    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
-    print(allData);
-    Text('$allData');
-  }
+class SeatDataState extends State<SeatData> {
+  SeatDataState();
 
   Widget build(BuildContext context) {
-    //final ButtonStyle style =ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
-    getData();
-    return const Material(
-      child: Center(
-          child: Text(
-        "Seat Data",
-      )),
+    return Scaffold(
+      floatingActionButton: null,
+      body: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection('Hospital').snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (!snapshot.hasData) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            final booksDB = snapshot.data?.docs;
+            List<Book> books = [];
+            if(booksDB != null){
+              for (var rest in booksDB) {
+              Object? restName = rest.data();
+              //final restURL = rest.data['url'];
+
+                final book = Book(
+                  name: restName.toString(),
+                  //url: restURL,
+                );
+                books.add(book);
+            }
+            }
+
+            return ListView(
+              children: books,
+            );
+           
+              })
+            );
+          }
+    
+  }
+
+
+class Book extends StatelessWidget {
+  Book({required this.name});
+
+  final String name;
+  //final String url;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Container(
+          child: Text('$name'),
+          
+        ),
+        SizedBox(
+          height: 200,
+        )
+       
+      ],
     );
   }
 }
