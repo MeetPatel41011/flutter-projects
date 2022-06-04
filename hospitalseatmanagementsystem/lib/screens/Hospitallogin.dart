@@ -22,16 +22,15 @@ class _HospitalloginState extends State<Hospitallogin> {
   final hospitalEmailController = TextEditingController();
 
   @override
-
   void dispose() {
     // Clean up the controller when the widget is disposed.
     hospitalEmailController.dispose();
     super.dispose();
   }
 
-  clearText() {
-    hospitalEmailController.clear();
-  }
+  //clearText() {
+    //hospitalEmailController.clear();
+  //}
 
   Widget build(BuildContext context) {
     final ButtonStyle style =
@@ -78,17 +77,19 @@ class _HospitalloginState extends State<Hospitallogin> {
             ElevatedButton(
               style: style,
               onPressed: () async {
+                const Center(child: CircularProgressIndicator());
                 setState(() {
-                      hospitaleamil = hospitalEmailController.text;
-                      //clearText();
-                    });
+                  hospitaleamil = hospitalEmailController.text;
+                  //clearText();
+                });
                 try {
                   UserCredential userCredential = await FirebaseAuth.instance
                       .signInWithEmailAndPassword(email: email, password: pass);
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => HospitalUpdateSeat(title: hospitaleamil)));
+                          builder: (context) =>
+                              HospitalUpdateSeat(title: hospitaleamil)));
                 } on FirebaseAuthException catch (e) {
                   if (e.code == 'user-not-found') {
                     Fluttertoast.showToast(
@@ -116,8 +117,6 @@ class _HospitalloginState extends State<Hospitallogin> {
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: GestureDetector(
                 onTap: () {
-        
-
                   Navigator.push(
                       context,
                       MaterialPageRoute(

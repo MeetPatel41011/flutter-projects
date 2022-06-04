@@ -14,10 +14,13 @@ class HospitalRegistration extends StatefulWidget {
 }
 
 class _HospitalRegistrationState extends State<HospitalRegistration> {
-
   CollectionReference firebasefirestore =
       FirebaseFirestore.instance.collection('Hospital');
   //final _formKey = GlobalKey<FormState>();
+
+  //var firebaseUser = FirebaseAuth.instance.currentUser;
+  //var uid = '';
+  //final uid = firebaseUser!.uid.toString();
   var hospitalname = '',
       hospitalcaption = '',
       hospitaladdress = '',
@@ -25,7 +28,7 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
       hospitalcontactnum2 = '',
       hospitaleamil = '',
       hospitalpassword = '';
-      
+  var uid = '';
   var hospitalName = "";
   var hospitalCaption = "";
   var hospitalAddress = "";
@@ -44,28 +47,28 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
   final hospitalPasswordController = TextEditingController();
 
   @override
-  void dispose() {
+  //void dispose() {
     // Clean up the controller when the widget is disposed.
-    hospitalNameController.dispose();
-    hospitalCaptionController.dispose();
-    hospitalAddressController.dispose();
-    hospitalContactNumController.dispose();
-    hospitalContactNum2Controller.dispose();
-    hospitalEmailController.dispose();
-    hospitalPasswordController.dispose();
-    myController.dispose();
-    super.dispose();
-  }
+    //ospitalNameController.dispose();
+    //hospitalCaptionController.dispose();
+    //hospitalAddressController.dispose();
+    //hospitalContactNumController.dispose();
+    //hospitalContactNum2Controller.dispose();
+    //hospitalEmailController.dispose();
+    //hospitalPasswordController.dispose();
+    //myController.dispose();
+    //super.dispose();
+  //}
 
-  clearText() {
-    hospitalNameController.clear();
-    hospitalCaptionController.clear();
-    hospitalAddressController.clear();
-    hospitalContactNumController.clear();
-    hospitalContactNum2Controller.clear();
-    hospitalEmailController.clear();
-    hospitalPasswordController.clear();
-  }
+  //clearText() {
+    //hospitalNameController.clear();
+    //hospitalCaptionController.clear();
+    //hospitalAddressController.clear();
+    //hospitalContactNumController.clear();
+    //hospitalContactNum2Controller.clear();
+    //hospitalEmailController.clear();
+    //hospitalPasswordController.clear();
+  //}
 
   String email = '', pass = '', name = '';
   Future<void> addUser() {
@@ -80,7 +83,8 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
             'Hospital-contactNumber': hospitalcontactnum,
             'Hospital-contactNumber2': hospitalcontactnum2,
             'Hospital-EmailAddress': hospitaleamil,
-            'Hospital-password': hospitalpassword
+            'Hospital-password': hospitalpassword,
+            'user-id': uid
           },
           SetOptions(merge: true),
           // if set to 'false', then only these given fields will be added to that doc
@@ -217,6 +221,7 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                 child: ElevatedButton(
                   style: style,
                   onPressed: () async {
+                    const Center(child: CircularProgressIndicator());
                     setState(() {
                       hospitalname = hospitalNameController.text;
                       hospitalcaption = hospitalCaptionController.text;
@@ -225,6 +230,7 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                       hospitalcontactnum2 = hospitalContactNum2Controller.text;
                       hospitaleamil = hospitalEmailController.text;
                       hospitalpassword = hospitalPasswordController.text;
+                      
                       addUser();
                       //clearText();
                     });
@@ -236,7 +242,8 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AddSeatForHospital(title: hospitalEmailController.text)));
+                              builder: (context) => AddSeatForHospital(
+                                  title: hospitalEmailController.text)));
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'weak-password') {
                         Fluttertoast.showToast(

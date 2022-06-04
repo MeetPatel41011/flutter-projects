@@ -36,13 +36,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "My Flutter App",
         home: Scaffold(
-            appBar: AppBar(
-              title: const Text("My First App Screen"),
-            ),
-            body: const FirstScreen()));
+            body: FirstScreen()));
   }
 }

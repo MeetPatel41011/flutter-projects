@@ -1,10 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hospitalseatmanagementsystem/screens/SeatData.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddSeatForHospital extends StatefulWidget {
   const AddSeatForHospital({Key? key, required this.title}) : super(key: key);
-  final String? title;
+  final String title;
   @override
   State<AddSeatForHospital> createState() => _AddSeatForHospitalState();
 }
@@ -12,8 +13,8 @@ class AddSeatForHospital extends StatefulWidget {
 class _AddSeatForHospitalState extends State<AddSeatForHospital> {
   CollectionReference firebasefirestore =
       FirebaseFirestore.instance.collection('Hospital');
-  //final _formKey = GlobalKey<FormState>();
-
+  var firebaseUser = FirebaseAuth.instance.currentUser;
+  var uid = '';
   var mild = "";
   var moderate = "";
   var severe = "";
@@ -44,14 +45,15 @@ class _AddSeatForHospitalState extends State<AddSeatForHospital> {
 
   Future<void> addUser() {
     return firebasefirestore
-        .doc('${widget.title}')
+        .doc(widget.title.toString())
+        //.doc(uid)
         //will edit the doc if already available or will create a new doc with this given ID
         .set(
           {
             'mild-seat': mild,
             'moderate-seat': moderate,
             'severe-seat': severe,
-            'critical-seat': critical
+            'critical-seat': critical,
           },
           SetOptions(merge: true),
           // if set to 'false', then only these given fields will be added to that doc
@@ -81,6 +83,7 @@ class _AddSeatForHospitalState extends State<AddSeatForHospital> {
                   //border: OutlineInputBorder(),
                   labelText: 'Enter Mild seat vacancy',
                 ),
+                controller: mildController,
               ),
             ),
             Padding(
@@ -123,12 +126,14 @@ class _AddSeatForHospitalState extends State<AddSeatForHospital> {
             ElevatedButton(
               style: style,
               onPressed: () {
+                const Center(child: CircularProgressIndicator());
                 //print('${widget.title}');
                 setState(() {
                   mild = mildController.text;
                   moderate = moderateController.text;
                   severe = criticalController.text;
                   critical = criticalController.text;
+                  uid = firebaseUser!.uid.toString();
                   addUser();
                   clearText();
                 });
