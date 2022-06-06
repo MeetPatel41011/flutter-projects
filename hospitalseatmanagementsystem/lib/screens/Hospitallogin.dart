@@ -36,17 +36,61 @@ class _HospitalloginState extends State<Hospitallogin> {
     final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
     String email = '', pass = '';
+    final final_height = MediaQuery.of(context).size.height / 2;
+    final final_width = MediaQuery.of(context).size.width / 2;
 
-    return Material(
-      child: Center(
-          child: Container(
+    return Center(
+        child: Card(
+
+          shape:  OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10), 
+              borderSide: BorderSide(color: Colors.white)
+          ),
+          elevation: 8,
+          shadowColor: Colors.grey,
+          //margin: EdgeInsets.all(20),
+
+
+      
+      child: Container(
+
+        height: final_height,
+      width: final_width,
+      alignment: Alignment.center,
+      color: Colors.white,
+      
+          
+          child: ListView(
+            children: <Widget>[
+              Row(children: [
+                
+                  Container(
+                    color: Colors.lightBlue,
+                    child:  Padding(
+                      padding: EdgeInsets.only(top:final_height/2, bottom:final_height/2, right: 50, left: 50,),
+                      child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Hospital Seat Management System')
+                    ),)
+                    
+                    ),
+                    
+                Expanded(child: Column(
+                  children: [
+    
+    
+    
+    
+    Container(
         alignment: Alignment.center,
-        color: Colors.cyan,
+        //color: Colors.cyan,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+
+            
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 200),
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
               child: TextField(
                 onChanged: (value) {
                   email = value;
@@ -61,7 +105,7 @@ class _HospitalloginState extends State<Hospitallogin> {
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 20, horizontal: 200),
+                  const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
               child: TextField(
                 onChanged: (value) {
                   pass = value;
@@ -124,13 +168,23 @@ class _HospitalloginState extends State<Hospitallogin> {
                 },
                 child: const Text(
                   "Haven't Registered yet?",
-                  style: TextStyle(fontSize: 10, color: Colors.white),
+                  style: TextStyle(fontSize: 10, color: Colors.black),
                 ),
               ),
             ),
           ],
         ),
-      )),
+      )
+    
+                  ]
+                )
+                )
+              ]
+              )
+            ]
+          )
+      )
+        )
     );
   }
 }

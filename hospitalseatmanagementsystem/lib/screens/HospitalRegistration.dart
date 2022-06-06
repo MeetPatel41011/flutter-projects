@@ -99,23 +99,61 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
   Widget build(BuildContext context) {
     final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+        final final_height = MediaQuery.of(context).size.height / 2;
+    final final_width = MediaQuery.of(context).size.width / 2;
     //const Key centerKey = ValueKey<String>('bottom-sliver-list');
 
-    return Material(
-      child: Center(
-        child: Container(
+    return Center(
+        child: Card(
+
+          shape:  OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10), 
+              borderSide: BorderSide(color: Colors.white)
+          ),
+          elevation: 8,
+          shadowColor: Colors.grey,
+          //margin: EdgeInsets.all(20),
+
+
+      
+      child: Container(
+        
+        height: final_height/0.54,
+      width: final_width,
+      alignment: Alignment.center,
+      color: Colors.white,
+      
+          
+          child: ListView(
+            children: <Widget>[
+              Row(children: [
+                
+                  Container(
+                    color: Colors.lightBlue,
+                    child:  Padding(
+                      padding: EdgeInsets.only(top:final_height/1.08, bottom:final_height/1.08, right: 50, left: 50,),
+                      child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Hospital Seat Management System')
+                    ),)
+                    
+                    ),
+                    
+                Expanded(child: Column(
+                  children: [
+    
+    
+    Container(
           alignment: Alignment.center,
-          color: Colors.cyan,
+          //color: Colors.cyan,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Expanded(
-                child: SizedBox(height: 30),
-              ),
-              Expanded(
-                child: Padding(
+              
+              
+                Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 200),
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: TextFormField(
                     decoration: const InputDecoration(
                       border: UnderlineInputBorder(),
@@ -125,11 +163,10 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                     controller: hospitalNameController,
                   ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
+              
+              Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 200),
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: TextFormField(
                     decoration: const InputDecoration(
                       border: UnderlineInputBorder(),
@@ -139,11 +176,10 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                     controller: hospitalCaptionController,
                   ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
+              
+              Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 200),
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: TextFormField(
                     decoration: const InputDecoration(
                       border: UnderlineInputBorder(),
@@ -153,11 +189,10 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                     controller: hospitalAddressController,
                   ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
+              
+             Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 200),
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: TextFormField(
                     decoration: const InputDecoration(
                       border: UnderlineInputBorder(),
@@ -167,11 +202,10 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                     controller: hospitalContactNumController,
                   ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
+              
+              Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 200),
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: TextFormField(
                     decoration: const InputDecoration(
                       border: UnderlineInputBorder(),
@@ -181,11 +215,10 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                     controller: hospitalContactNum2Controller,
                   ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
+              
+            Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 200),
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: TextField(
                     onChanged: (value) {
                       email = value;
@@ -198,11 +231,10 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                     controller: hospitalEmailController,
                   ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
+              
+              Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 200),
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: TextField(
                     onChanged: (value) {
                       pass = value;
@@ -215,10 +247,9 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                     controller: hospitalPasswordController,
                   ),
                 ),
-              ),
-              const Expanded(child: SizedBox(height: 30)),
-              Expanded(
-                child: ElevatedButton(
+              
+              //const Expanded(child: SizedBox(height: 30)),
+              ElevatedButton(
                   style: style,
                   onPressed: () async {
                     const Center(child: CircularProgressIndicator());
@@ -268,10 +299,8 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                   },
                   child: const Text('Register Hospital'),
                 ),
-              ),
-              const Expanded(
-                child: SizedBox(height: 30),
-              ),
+              
+              
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: GestureDetector(
@@ -283,14 +312,24 @@ class _HospitalRegistrationState extends State<HospitalRegistration> {
                   },
                   child: const Text(
                     "Alredy Registered?",
-                    style: TextStyle(fontSize: 10, color: Colors.white),
+                    style: TextStyle(fontSize: 10, color: Colors.black),
                   ),
                 ),
               )
             ],
           ),
         ),
-      ),
+      
+  
+                  ]
+                )
+                )
+              ]
+              )
+            ]
+          )
+      )
+        )
     );
   }
 }
