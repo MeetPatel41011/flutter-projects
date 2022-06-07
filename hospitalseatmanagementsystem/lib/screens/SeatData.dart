@@ -59,11 +59,38 @@ class Book extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        final final_height = MediaQuery.of(context).size.height / 2;
+    final final_width = MediaQuery.of(context).size.width / 2;
     return Stack(
       children: <Widget>[
-        Container(
-          child: Text('$name'),
-          
+        Center(
+          child: Container(
+          width: final_width,
+                            
+                            child: Card(
+                              color: Color.fromRGBO(4,36,73, 1),
+                              shape: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50),
+                            borderSide: BorderSide(color: Colors.white)),
+                            elevation: 8,
+                            shadowColor: Colors.grey,
+                              child: Padding(
+                              padding: EdgeInsets.only(
+                                top: final_height / 6,
+                                bottom: final_height / 6,
+                                right: 80,
+                                left: 80,
+                              ),
+                              child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child:
+                                      Text('$name',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20
+                                      ),)),
+                            ),)
+                            ),
         ),
         SizedBox(
           height: 200,

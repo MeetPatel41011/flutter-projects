@@ -64,140 +64,146 @@ class _AddSeatForHospitalState extends State<AddSeatForHospital> {
 
   Widget build(BuildContext context) {
     final ButtonStyle style =
-        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20),
+        primary: Color.fromRGBO(4,36,73, 1));
 
-  final final_height = MediaQuery.of(context).size.height / 2;
+    final final_height = MediaQuery.of(context).size.height / 2;
     final final_width = MediaQuery.of(context).size.width / 2;
-    return Center(
-        child: Card(
-
-          shape:  OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10), 
-              borderSide: BorderSide(color: Colors.white)
-          ),
-          elevation: 8,
-          shadowColor: Colors.grey,
-          //margin: EdgeInsets.all(20),
-
-
-      
-      child: Container(
-
-        height: final_height/0.74,
-      width: final_width,
-      alignment: Alignment.center,
-      color: Colors.white,
-      
-          
-          child: ListView(
-            children: <Widget>[
-              Row(children: [
-                
-                  Container(
-                    color: Colors.lightBlue,
-                    child:  Padding(
-                      padding: EdgeInsets.only(top:final_height/1.48, bottom:final_height/1.48, right: 50, left: 50,),
-                      child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text('Hospital Seat Management System')
-                    ),)
-                    
-                    ),
-                    
-                Expanded(child: Column(
-                  children: [
-    
-    
-    
-     Container(
-        alignment: Alignment.center,
-        //color: Colors.cyan,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  //border: OutlineInputBorder(),
-                  labelText: 'Enter Mild seat vacancy',
-                ),
-                controller: mildController,
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  //border: OutlineInputBorder(),
-                  labelText: 'Enter Moderate Seat vacancy',
-                ),
-                controller: moderateController,
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  //border: OutlineInputBorder(),
-                  labelText: 'Enter Severe seat vacancy',
-                ),
-                controller: severeController,
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  //border: OutlineInputBorder(),
-                  labelText: 'Enter Critical Seat vacancy',
-                ),
-                controller: criticalController,
-              ),
-            ),
-            //const SizedBox(height: 50),
-            ElevatedButton(
-              style: style,
-              onPressed: () {
-                const Center(child: CircularProgressIndicator());
-                //print('${widget.title}');
-                setState(() {
-                  mild = mildController.text;
-                  moderate = moderateController.text;
-                  severe = criticalController.text;
-                  critical = criticalController.text;
-                  uid = firebaseUser!.uid.toString();
-                  addUser();
-                  clearText();
-                });
-
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SeatData()));
-              },
-              child: Text("Add seat data"),
-            ),
-            const SizedBox(height: 30),
-          ],
+    return Container(
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/backgroung.png"),
+              fit: BoxFit.cover),
         ),
-      )
-    
-                  ]
-                )
-                )
-              ]
-              )
-            ]
-      )
-      )
-        )
-    );
+        child: Center(
+            child: Card(
+                shape: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    borderSide: BorderSide(color: Colors.white)),
+                elevation: 8,
+                shadowColor: Colors.grey,
+                //margin: EdgeInsets.all(20),
+
+                child: Container(
+                    height: final_height / 0.74,
+                    width: final_width,
+                    alignment: Alignment.center,
+                    //color: Colors.white,
+                    child: ListView(children: <Widget>[
+                      Row(children: [
+                        Container(
+                            
+                            child: Card(
+                              color: Color.fromRGBO(4,36,73, 1),
+                              shape: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50),
+                            borderSide: BorderSide(color: Colors.white)),
+                            elevation: 8,
+                            shadowColor: Colors.grey,
+                              child: Padding(
+                              padding: EdgeInsets.only(
+                                top: final_height / 2.5,
+                                bottom: final_height / 2,
+                                right: 80,
+                                left: 80,
+                              ),
+                              child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child:
+                                      Text('Add Seats',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20
+                                      ),)),
+                            ),)
+                            ),
+                        Expanded(
+                            child: Column(children: [
+                          Container(
+                            alignment: Alignment.center,
+                            //color: Colors.cyan,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 20, horizontal: 20),
+                                  child: TextFormField(
+                                    decoration: const InputDecoration(
+                                      border: UnderlineInputBorder(),
+                                      //border: OutlineInputBorder(),
+                                      labelText: 'Enter Mild seat vacancy',
+                                    ),
+                                    controller: mildController,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 20, horizontal: 20),
+                                  child: TextFormField(
+                                    decoration: const InputDecoration(
+                                      border: UnderlineInputBorder(),
+                                      //border: OutlineInputBorder(),
+                                      labelText: 'Enter Moderate Seat vacancy',
+                                    ),
+                                    controller: moderateController,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 20, horizontal: 20),
+                                  child: TextFormField(
+                                    decoration: const InputDecoration(
+                                      border: UnderlineInputBorder(),
+                                      //border: OutlineInputBorder(),
+                                      labelText: 'Enter Severe seat vacancy',
+                                    ),
+                                    controller: severeController,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 20, horizontal: 20),
+                                  child: TextFormField(
+                                    decoration: const InputDecoration(
+                                      border: UnderlineInputBorder(),
+                                      //border: OutlineInputBorder(),
+                                      labelText: 'Enter Critical Seat vacancy',
+                                    ),
+                                    controller: criticalController,
+                                  ),
+                                ),
+                                //const SizedBox(height: 50),
+                                ElevatedButton(
+                                  style: style,
+                                  onPressed: () {
+                                    const Center(
+                                        child: CircularProgressIndicator());
+                                    //print('${widget.title}');
+                                    setState(() {
+                                      mild = mildController.text;
+                                      moderate = moderateController.text;
+                                      severe = criticalController.text;
+                                      critical = criticalController.text;
+                                      uid = firebaseUser!.uid.toString();
+                                      addUser();
+                                      clearText();
+                                    });
+
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => SeatData()));
+                                  },
+                                  child: Text("Add seat data"),
+                                ),
+                                const SizedBox(height: 30),
+                              ],
+                            ),
+                          )
+                        ]))
+                      ])
+                    ])))));
   }
 }

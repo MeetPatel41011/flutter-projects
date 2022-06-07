@@ -40,6 +40,7 @@ dependencies:
   fluttertoast: ^8.0.9
   cloud_firestore: ^3.1.17
   shared_preferences: ^2.0.15
+  url_launcher: ^6.1.2
   
 dev_dependencies:
   flutter_test:
@@ -64,8 +65,12 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+   - assets/images/shapeOfCirculerImage - Copy.png
+   - assets/images/image2.png
+   - assets/images/Screenshot 2022-06-07 041606.jpg
+   - assets/images/2.jpg
+   - assets/backgroung.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
